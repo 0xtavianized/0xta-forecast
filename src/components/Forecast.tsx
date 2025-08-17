@@ -1,14 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "./ui/card";
-import { CloudSunRain } from "lucide-react";
-import { format } from "path";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 interface Cuaca {
   cuaca?: string;

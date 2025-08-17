@@ -1,13 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "./ui/card";
-import { Label } from "@radix-ui/react-label";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Wind } from "lucide-react";
 
 export default function AirQuality() {

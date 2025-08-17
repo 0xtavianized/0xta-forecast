@@ -1,6 +1,5 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import AirQuality from "@/components/AirQuality";
 import Posisi from "@/components/Posisi";

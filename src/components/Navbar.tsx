@@ -10,18 +10,18 @@ export default function Navbar() {
     <nav className="bg-gray-900 text-white shadow-md fixed top-0 left-0 w-full z-50">
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
-        <a href="/" className="text-2xl font-bold tracking-wide">
+        <Link href="/" className="text-2xl font-bold tracking-wide">
           0xta <span className="text-blue-300">Forecast</span>
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6 text-white">
-          <a href="/" className="hover:text-gray-400 transition-colors">
+          <Link href="/" className="hover:text-gray-400 transition-colors">
             Home
-          </a>
-          <a href="/about" className="hover:text-gray-400 transition-colors">
+          </Link>
+          <Link href="/about" className="hover:text-gray-400 transition-colors">
             About
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
