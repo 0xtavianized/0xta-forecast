@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,20 +36,20 @@ export default function Navbar() {
       {/* Mobile Dropdown */}
       {isOpen && (
         <div className="md:hidden bg-gray-900 flex flex-col space-y-4 p-4">
-          <a
+          <Link
             href="/"
             className="hover:text-white transition-colors"
             onClick={() => setIsOpen(false)}
           >
             Home
-          </a>
-          <a
+          </Link>
+          <Link
             href="/about"
             className="hover:text-white transition-colors"
             onClick={() => setIsOpen(false)}
           >
             About
-          </a>
+          </Link>
         </div>
       )}
     </nav>
