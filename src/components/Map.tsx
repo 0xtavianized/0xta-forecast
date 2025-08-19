@@ -1,21 +1,10 @@
 "use client";
 
 import { Card, CardContent } from "./ui/card";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import "leaflet-defaulticon-compatibility";
-import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import { useEffect, useState } from "react";
-
-interface Alamat {
-  village?: string;
-  suburb?: string;
-  city?: string;
-}
 
 export default function Map() {
   const [position, setPosition] = useState<[number, number] | null>(null);
-  const [alamat, setAlamat] = useState<Alamat | null>(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(async (pos) => {
@@ -32,12 +21,6 @@ export default function Map() {
       const desa = data.results[0].address_components[2].long_name;
       const kecamatan = data.results[0].address_components[3].long_name;
       const kota = data.results[0].address_components[4].long_name;
-      // console.log(data.results[0]);
-      setAlamat({
-        village: desa,
-        suburb: kecamatan,
-        city: kota,
-      });
     });
   }, []);
 
@@ -46,23 +29,17 @@ export default function Map() {
   return (
     <Card className="w-full z-0">
       <CardContent>
-        <MapContainer
-          center={position}
-          zoom={15}
-          scrollWheelZoom={true}
-          style={{ height: "400px", width: "100%" }}
-          className="rounded-lg"
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={position}>
-            <Popup>
-              {alamat?.village}, {alamat?.suburb}, {alamat?.city}
-            </Popup>
-          </Marker>
-        </MapContainer>
+        <div className="rounded-lg border-2 border-gray-400">
+          <iframe
+            width="100%"
+            height="400"
+            loading="lazy"
+            style={{ border: 0 }}
+            className="rounded-lg"
+            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_API}&q=${position[0]},${position[1]}&zoom=15`}
+            allowFullScreen
+          ></iframe>
+        </div>
       </CardContent>
     </Card>
   );

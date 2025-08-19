@@ -6,6 +6,7 @@ import Posisi from "@/components/Posisi";
 import Weather from "@/components/Weather";
 import Navbar from "@/components/Navbar";
 import Forecast from "@/components/Forecast";
+import Gempa from "@/components/Gempa";
 
 const Maps = dynamic(() => import("@/components/Map"), {
   loading: () => <p>A map is loading...</p>,
@@ -27,12 +28,18 @@ export default function Page() {
             <Weather />
           </div>
           <div className="hidden flex-1">
+            <Gempa />
+          </div>
+          <div className="hidden flex-1">
             <Forecast />
           </div>
         </div>
       </div>
       <div className="p-2 flex">
         <Forecast />
+      </div>
+      <div className="p-2 flex">
+        <Gempa />
       </div>
     </div>
   );

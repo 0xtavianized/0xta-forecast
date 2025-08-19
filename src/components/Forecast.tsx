@@ -33,7 +33,7 @@ export default function Forecast() {
         }
       );
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setCuaca({
         cuaca:
           data.forecastDays[1].daytimeForecast.weatherCondition.description

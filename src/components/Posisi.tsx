@@ -2,42 +2,10 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardTitle } from "./ui/card";
 import { MapPinned } from "lucide-react";
-
-interface Alamat {
-  alamat?: string;
-}
+import { usePosisi } from "@/lib/posisi";
 
 export default function Posisi() {
-  const [position, setPosition] = useState<[number, number] | null>(null);
-
-  const [alamat, setAlamat] = useState<Alamat | null>(null);
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async (pos) => {
-      const lat = pos.coords.latitude;
-      const long = pos.coords.longitude;
-      const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API;
-
-      setPosition([lat, long]);
-
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${apiKey}`
-      );
-      const data = await response.json();
-      const dusun = data.results[0].address_components[1].long_name;
-      const desa = data.results[0].address_components[2].long_name;
-      const kecamatan = data.results[0].address_components[3].long_name;
-      const kota = data.results[0].address_components[4].long_name;
-      const provinsi = data.results[0].address_components[5].long_name;
-      const kodePos = data.results[0].address_components[7].long_name;
-      const alamat = `${dusun}, ${desa}, ${kecamatan}, ${kota}, ${provinsi}, ${kodePos}`;
-      //   console.log(data.results[0]);
-      setAlamat({
-        alamat: alamat,
-      });
-    });
-  }, []);
-
+  const { position, alamat } = usePosisi();
   return (
     <Card className="w-full h-full">
       <CardTitle className="flex gap-2 items-center">
