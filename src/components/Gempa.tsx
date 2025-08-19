@@ -54,7 +54,7 @@ export default function Gempa() {
         </CardTitle>
       </CardHeader>
 
-      <CardContent className="flex flex-row">
+      <CardContent className="flex flex-col sm:flex-row">
         <div className="flex-1 my-auto gap-2 ml-4">
           <p className="text-2xl mb-4">
             <strong>Tanggal:</strong> <br /> {gempa.tanggal}
